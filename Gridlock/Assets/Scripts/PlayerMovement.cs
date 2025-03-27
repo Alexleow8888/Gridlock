@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10f;
+    public static float speed = 10f;
 
     private Rigidbody2D player;
 
@@ -33,6 +34,18 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = speed - 1f;
         }
+        if (Input.GetKeyDown("n") && !SceneManager.GetSceneByName("ShopUI").isLoaded)
+        {
+            SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
+            Time.timeScale = 0;
+        }
+        if (Input.GetKeyDown("m") && SceneManager.GetSceneByName("ShopUI").isLoaded)
+        {
+            SceneManager.UnloadSceneAsync("ShopUI");
+            Time.timeScale = 1;
+            
+        }
+        Debug.Log(speed);
     }
     private void FixedUpdate()
     {
