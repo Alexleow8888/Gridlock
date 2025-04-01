@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1;
             
         }
-        Debug.Log(speed);
+        Debug.Log("Player Speed = " + speed);
     }
     private void FixedUpdate()
     {
