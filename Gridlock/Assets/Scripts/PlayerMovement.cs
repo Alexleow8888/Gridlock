@@ -39,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
             Time.timeScale = 0;
         }
-        if (Input.GetKeyDown("m") && SceneManager.GetSceneByName("ShopUI").isLoaded)
+        if (Input.GetKeyDown("m") && SceneManager.GetSceneByName("PerksUI").isLoaded)
         {
-            SceneManager.UnloadSceneAsync("ShopUI");
+            SceneManager.UnloadSceneAsync("PerksUI");
             Time.timeScale = 1;
             
         }

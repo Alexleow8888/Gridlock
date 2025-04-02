@@ -6,7 +6,5 @@ using UnityEngine;
 
 public class ShopValues : ScriptableObject
 {
-    public int SpeedLevel;
-    public float SpeedPrice;
 
 }

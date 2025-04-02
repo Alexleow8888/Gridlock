@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopUI.unity
     guid: b66b940c46e7a084d870b72021c0254e
+  - enabled: 1
+    path: Assets/Scenes/PerksUI.unity
+    guid: 6baccf80d4a68764bbd608d9fc971182
   m_configObjects: {}
