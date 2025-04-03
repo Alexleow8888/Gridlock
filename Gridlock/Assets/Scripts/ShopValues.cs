@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class ShopValues : ScriptableObject
 {
-
+    public int Points;
 }

@@ -12,10 +12,21 @@ public class PlayerMovement : MonoBehaviour
     private float Horizontal;
     private float Vertical;
 
+    public PerksValues PerksValues;
+    public ShopValues ShopValues;
+
+    private int IsRunning = 1;
+    private int NumberofSeconds = 5;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+
+        PerksValues.PerkPoints = 0;
+        PerksValues.SpeedLevel = 0;
+
+        ShopValues.Points = 0;
     }
 
     // Update is called once per frame
@@ -38,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
             Time.timeScale = 0;
+            PerksValues.PerkPoints += 1;
         }
         if (Input.GetKeyDown("m") && SceneManager.GetSceneByName("PerksUI").isLoaded)
         {
@@ -45,10 +57,22 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1;
             
         }
-        Debug.Log("Player Speed = " + speed);
+        Debug.Log("Player Speed = " + speed + ". Points = " + ShopValues.Points);
+
+        if (IsRunning == 1)
+        {
+            StartCoroutine(timer());
+        }
     }
     private void FixedUpdate()
     {
         player.velocity = new Vector2(Horizontal, Vertical).normalized * speed;
+    }
+    public IEnumerator timer()
+    {
+        IsRunning = 0;
+        yield return new WaitForSeconds(NumberofSeconds);
+        ShopValues.Points += 1;
+        IsRunning = 1;
     }
 }

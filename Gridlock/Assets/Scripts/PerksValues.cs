@@ -7,6 +7,8 @@ using UnityEngine;
 public class PerksValues : ScriptableObject
 {
     public int SpeedLevel;
+
+    public int PerkPoints;
    
     // Just stores the values that saves across scenes.
 }

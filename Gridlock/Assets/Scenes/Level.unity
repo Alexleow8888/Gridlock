@@ -310,7 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b515ad4a1c281ab44976c2c38915ed1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  PerksValues: {fileID: 11400000, guid: 26217c0c941206f47adf5ea3c241693a, type: 2}
+  ShopValues: {fileID: 11400000, guid: 80d4c716e9b0ec445ab2bba947acafad, type: 2}
 --- !u!50 &632287855
 Rigidbody2D:
   serializedVersion: 4
