@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = speed - 1f;
         }
-        if (Input.GetKeyDown("n") && !SceneManager.GetSceneByName("ShopUI").isLoaded)
+        if (Input.GetKeyDown("n") && !SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
         {
             SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
             Time.timeScale = 0;
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1;
             
         }
-        Debug.Log("Player Speed = " + speed + ". Points = " + ShopValues.Points);
+        //Debug.Log("Player Speed = " + speed + ". Points = " + ShopValues.Points);
 
         if (IsRunning == 1)
         {
