@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     public float force;
 
+    [Range(1, 10)] // lifetime
+
+    [SerializeField] private float lifeTime = 3f;
+
+    public float BulletDamage;
 
 
     // Start is called before the first frame update
@@ -22,12 +27,29 @@ public class Bullet : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
-        
+
+
+        Destroy(gameObject, lifeTime);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            DestroyProjectile();
+            //Destroy(other.gameObject);
+        }
+    }
+
+    void DestroyProjectile()
+    {
+        Destroy(gameObject);
+
     }
 }

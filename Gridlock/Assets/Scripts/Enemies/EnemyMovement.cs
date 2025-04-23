@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -14,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     private int CanSeePlayer = 0;
     // Stores whether the Ray is colliding with the player
 
+
+    public float EnemyHealth = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,11 @@ public class EnemyMovement : MonoBehaviour
         if (CanSeePlayer == 0)
         {
             Debug.Log("No player detected");
+        }
+
+        if(EnemyHealth <= 0)
+        {
+            Destroy(gameObject);
         }
 
     }
@@ -66,6 +74,13 @@ public class EnemyMovement : MonoBehaviour
             CanSeePlayer = 0;
             // If the ray doesn't hit anything then sets the CanSeePlayer to a false state.
         }
-
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Bullet")
+        {
+            EnemyHealth -= 5f;
+        }
     }
 }
