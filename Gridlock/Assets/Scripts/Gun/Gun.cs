@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -13,36 +16,87 @@ public class Gun : MonoBehaviour
     private float Timer;
     public float TimeBetweenFiring;
 
+    private static int CurrentLoadedAmmo;
+    private static int CurrentStoredAmmo;
+    private static int MaxLoadedAmmo;
+    private static int MaxStoredAmmo;
+    private static int AmmoDifference;
+    public Text AmmoTxt;
+
     // Start is called before the first frame update
     void Start()
     {
         MainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        
 
+        CurrentLoadedAmmo = 6;
+        CurrentStoredAmmo = 30;
+        MaxLoadedAmmo = 6;
+        MaxStoredAmmo = 30;
+        AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
         mousePos = MainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 rotation = mousePos - transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
-
-        if (!CanFire)
+        if(!SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
         {
-            Timer += Time.deltaTime;
-            if(Timer > TimeBetweenFiring)
+            Vector3 rotation = mousePos - transform.position;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
+        if(SceneManager.GetSceneByName("ShopUI").isLoaded || SceneManager.GetSceneByName("PerksUI").isLoaded)
+        {
+            CanFire = false;
+        }
+
+
+        if (CurrentLoadedAmmo > 0 || CurrentStoredAmmo > 0)
+        {
+            if (!CanFire)
             {
-                CanFire = true;
-                Timer = 0;
+                Timer += Time.deltaTime;
+                if(Timer > TimeBetweenFiring)
+                {
+                    CanFire = true;
+                    Timer = 0;
+                }
             }
         }
 
-        if (Input.GetMouseButton(0) && CanFire)
+
+        if (Input.GetMouseButton(0) && CanFire == true && CurrentLoadedAmmo > 0)
         {
             CanFire = false;
             Instantiate(Bullet, BulletTransform.position, Quaternion.identity);
+            CurrentLoadedAmmo -= 1;
+            AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
+        }
+
+
+        if (Input.GetKeyDown("r") && CurrentStoredAmmo > 0)
+        {
+            AmmoDifference = MaxLoadedAmmo - CurrentLoadedAmmo;
+            if (CurrentStoredAmmo >= AmmoDifference)
+            {
+                // If we have enough ammo in storage to fill the magazine
+                CurrentLoadedAmmo += AmmoDifference;
+                CurrentStoredAmmo -= AmmoDifference;
+            }
+            else
+            {
+                // If we don't have enough ammo, load whatever is left
+                CurrentLoadedAmmo += CurrentStoredAmmo;
+                CurrentStoredAmmo = 0;  // All stored ammo used up
+            }
+            AmmoDifference = MaxLoadedAmmo - CurrentLoadedAmmo;
+            AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
         }
+
+
+
+
     }
 }
