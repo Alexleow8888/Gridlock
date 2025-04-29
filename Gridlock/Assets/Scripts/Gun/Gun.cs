@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,7 +32,7 @@ public class Gun : MonoBehaviour
         CurrentStoredAmmo = 30;
         MaxLoadedAmmo = 6;
         MaxStoredAmmo = 30;
-        AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
+        AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
     }
 
     // Update is called once per frame
@@ -71,7 +70,7 @@ public class Gun : MonoBehaviour
             CanFire = false;
             Instantiate(Bullet, BulletTransform.position, Quaternion.identity);
             CurrentLoadedAmmo -= 1;
-            AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
+            AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
         }
 
 
@@ -91,7 +90,7 @@ public class Gun : MonoBehaviour
                 CurrentStoredAmmo = 0;  // All stored ammo used up
             }
             AmmoDifference = MaxLoadedAmmo - CurrentLoadedAmmo;
-            AmmoTxt.text = "Ammo :" + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
+            AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
         }
 

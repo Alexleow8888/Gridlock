@@ -17,13 +17,18 @@ public class EnemyMovement : MonoBehaviour
 
 
     public float EnemyHealth = 30f;
+    public float MaxEnemyHealth = 30f;
 
+    [SerializeField] FloatingHealthBar healthBar;
+    
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         // Finds the object that has the Player tag assigning it to the player variable
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
 
+        healthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
     }
 
     // Update is called once per frame
@@ -81,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
         if(collision.tag == "Bullet")
         {
             EnemyHealth -= 5f;
+            healthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
         }
     }
 }
