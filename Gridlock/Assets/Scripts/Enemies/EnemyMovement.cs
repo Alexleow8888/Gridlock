@@ -19,16 +19,17 @@ public class EnemyMovement : MonoBehaviour
     public float EnemyHealth = 30f;
     public float MaxEnemyHealth = 30f;
 
-    [SerializeField] FloatingHealthBar healthBar;
+    [SerializeField] FloatingHealthBar EnemyHealthBar;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         // Finds the object that has the Player tag assigning it to the player variable
-        healthBar = GetComponentInChildren<FloatingHealthBar>();
+        
+        EnemyHealthBar = GetComponentInChildren<FloatingHealthBar>();
 
-        healthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
+        EnemyHealthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
     }
 
     // Update is called once per frame
@@ -37,12 +38,12 @@ public class EnemyMovement : MonoBehaviour
         if (CanSeePlayer == 1)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            Debug.Log("Can see the player");
+           // Debug.Log("Can see the player");
             // If the enemy can see the player then move in that direction
         }
         if (CanSeePlayer == 0)
         {
-            Debug.Log("No player detected");
+            //Debug.Log("No player detected");
         }
 
         if(EnemyHealth <= 0)
@@ -86,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
         if(collision.tag == "Bullet")
         {
             EnemyHealth -= 5f;
-            healthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
+            EnemyHealthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
         }
     }
 }

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7e29df7ac51e2468b601f88ce32321, type: 3}
   m_Name: ShopData
   m_EditorClassIdentifier: 
+  Points: 0
+  HealthPrice: 10
+  ArmourPrice: 10
+  AmmoPrice: 10

@@ -18,6 +18,15 @@ public class PlayerMovement : MonoBehaviour
     private int IsRunning = 1;
     private int NumberofSeconds = 5;
 
+    public static int PlayerHealth = 100;
+    public static int MaxPlayerHealth = 100;
+
+    public static int PlayerArmour = 50;
+    public static int MaxPlayerArmour = 50;
+
+    [SerializeField] FloatingHealthBar PlayerHealthBar;
+    [SerializeField] FloatingHealthBar PlayerArmourBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
         PerksValues.SpeedLevel = 0;
 
         ShopValues.Points = 0;
+
+
+        PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
+        PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
     }
 
     // Update is called once per frame
@@ -63,6 +76,14 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(timer());
         }
+
+        if (PlayerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
+        PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
     }
     private void FixedUpdate()
     {
@@ -74,5 +95,24 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(NumberofSeconds);
         ShopValues.Points += 1;
         IsRunning = 1;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            if (PlayerArmour > 0)
+            {
+                PlayerArmour -= 1;
+                PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
+            }
+            if (PlayerArmour == 0)
+            {
+                PlayerHealth -= 1;
+                PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
+
+            }
+
+
+        }
     }
 }

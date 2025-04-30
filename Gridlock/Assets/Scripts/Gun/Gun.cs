@@ -15,11 +15,11 @@ public class Gun : MonoBehaviour
     private float Timer;
     public float TimeBetweenFiring;
 
-    private static int CurrentLoadedAmmo;
-    private static int CurrentStoredAmmo;
-    private static int MaxLoadedAmmo;
-    private static int MaxStoredAmmo;
-    private static int AmmoDifference;
+    public static int CurrentLoadedAmmo;
+    public static int CurrentStoredAmmo;
+    public static int MaxLoadedAmmo;
+    public static int MaxStoredAmmo;
+    public static int AmmoDifference;
     public Text AmmoTxt;
 
     // Start is called before the first frame update
@@ -94,7 +94,7 @@ public class Gun : MonoBehaviour
 
         }
 
-
+        AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
 
     }
