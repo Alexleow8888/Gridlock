@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour
     public float EnemyHealth = 30f;
     public float MaxEnemyHealth = 30f;
 
+    public static float Damage = 5f;
+
     [SerializeField] FloatingHealthBar EnemyHealthBar;
     
     // Start is called before the first frame update
@@ -86,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if(collision.tag == "Bullet")
         {
-            EnemyHealth -= 5f;
+            EnemyHealth -= Damage;
             EnemyHealthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
         }
     }

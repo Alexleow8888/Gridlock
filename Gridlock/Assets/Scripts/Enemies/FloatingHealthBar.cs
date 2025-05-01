@@ -16,6 +16,6 @@ public class FloatingHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Health " + PlayerMovement.PlayerHealth + "| Armour " + PlayerMovement.PlayerArmour);
+        //Debug.Log("Health " + PlayerMovement.PlayerHealth + "| Armour " + PlayerMovement.PlayerArmour);
     }
 }

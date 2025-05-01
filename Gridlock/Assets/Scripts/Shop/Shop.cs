@@ -40,6 +40,7 @@ public class Shop : MonoBehaviour
             ShopValues.HealthPrice *= 1.1f;
             ShopValues.HealthPrice = Mathf.Round(ShopValues.HealthPrice);
             PlayerMovement.PlayerHealth = PlayerMovement.MaxPlayerHealth;
+            PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }
     public void ReplenishArmourButton()
@@ -50,6 +51,7 @@ public class Shop : MonoBehaviour
             ShopValues.ArmourPrice *= 1.1f;
             ShopValues.ArmourPrice = Mathf.Round(ShopValues.ArmourPrice);
             PlayerMovement.PlayerArmour = PlayerMovement.MaxPlayerArmour;
+            PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }
     public void ReplenishAmmoButton()
@@ -61,6 +63,7 @@ public class Shop : MonoBehaviour
             ShopValues.AmmoPrice = Mathf.Round(ShopValues.AmmoPrice);
             Gun.CurrentLoadedAmmo = Gun.MaxLoadedAmmo;
             Gun.CurrentStoredAmmo = Gun.MaxStoredAmmo;
+            PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }
 }

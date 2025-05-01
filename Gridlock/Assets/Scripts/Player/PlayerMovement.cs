@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
 
         PerksValues.PerkPoints = 0;
-        PerksValues.SpeedLevel = 0;
+        PerksValues.IncreasedSpeedLevel = 0;
 
         ShopValues.Points = 0;
 
@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Speed " + PlayerMovement.speed + " | Damage " + EnemyMovement.Damage + " | Health " + PlayerMovement.MaxPlayerHealth + " | Ammo " + Gun.MaxStoredAmmo);
         Horizontal = Input.GetAxisRaw("Horizontal");
         // Detects for the inputs A/D or Left/Right arrow keys.
         Vertical = Input.GetAxisRaw("Vertical");
