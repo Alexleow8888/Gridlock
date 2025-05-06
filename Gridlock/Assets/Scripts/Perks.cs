@@ -17,8 +17,11 @@ public class Perks : MonoBehaviour
 
     void Start()
     {
-        SpeedLevelTxt.text = "Level - " + PerksValues.IncreasedSpeedLevel + "/5";
-        PerkPointsTxt.text = "Perk Points - " + PerksValues.PerkPoints;
+        SpeedLevelTxt.text = "Level : " + PerksValues.IncreasedSpeedLevel + "/5";
+        DamageLevelTxt.text = "Level : " + PerksValues.IncreasedDamageLevel + "/5";
+        HealthLevelTxt.text = "Level : " + PerksValues.IncreasedHealthLevel + "/5";
+        AmmoLevelTxt.text = "Level : " + PerksValues.IncreasedAmmoLevel + "/5";
+        PerkPointsTxt.text = "Perk Points : " + PerksValues.PerkPoints;
     }
     void Update()
     {

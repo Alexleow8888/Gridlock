@@ -45,7 +45,7 @@ public class Gun : MonoBehaviour
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotZ);
         }
-        if(SceneManager.GetSceneByName("ShopUI").isLoaded || SceneManager.GetSceneByName("PerksUI").isLoaded)
+        if(SceneManager.GetSceneByName("ShopUI").isLoaded || SceneManager.GetSceneByName("PerksUI").isLoaded || SceneManager.GetSceneByName("PauseMenu").isLoaded)
         {
             CanFire = false;
         }

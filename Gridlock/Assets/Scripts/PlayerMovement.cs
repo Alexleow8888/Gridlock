@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
         PerksValues.PerkPoints = 0;
         PerksValues.IncreasedSpeedLevel = 0;
+        PerksValues.IncreasedDamageLevel = 0;
+        PerksValues.IncreasedHealthLevel = 0;
+        PerksValues.IncreasedAmmoLevel = 0;
 
         ShopValues.Points = 0;
 
@@ -70,6 +73,15 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.UnloadSceneAsync("PerksUI");
             Time.timeScale = 1;
             
+        }
+        if (Input.GetKeyDown("escape"))
+        {
+            if (!SceneManager.GetSceneByName("PauseMenu").isLoaded && !SceneManager.GetSceneByName("OptionsMenu").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded && !SceneManager.GetSceneByName("ShopUI").isLoaded)
+            {
+                SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+                Time.timeScale = 0;
+            }
+
         }
         //Debug.Log("Player Speed = " + speed + ". Points = " + ShopValues.Points);
 
