@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static float speed = 10f;
+    public static float speed;
 
     private Rigidbody2D player;
 
@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
     public PerksValues PerksValues;
     public ShopValues ShopValues;
 
-    private int IsRunning = 1;
-    private int NumberofSeconds = 5;
+    private int IsRunning;
+    private int NumberofSeconds;
 
-    public static int PlayerHealth = 100;
-    public static int MaxPlayerHealth = 100;
+    public static int PlayerHealth;
+    public static int MaxPlayerHealth ;
 
-    public static int PlayerArmour = 50;
-    public static int MaxPlayerArmour = 50;
+    public static int PlayerArmour;
+    public static int MaxPlayerArmour;
 
     [SerializeField] FloatingHealthBar PlayerHealthBar;
     [SerializeField] FloatingHealthBar PlayerArmourBar;
@@ -32,11 +32,20 @@ public class PlayerMovement : MonoBehaviour
     {
         player = GetComponent<Rigidbody2D>();
 
+        IsRunning = 1;
+        NumberofSeconds = 5;
+
+        speed = 10f;
         PerksValues.PerkPoints = 0;
         PerksValues.IncreasedSpeedLevel = 0;
         PerksValues.IncreasedDamageLevel = 0;
         PerksValues.IncreasedHealthLevel = 0;
         PerksValues.IncreasedAmmoLevel = 0;
+        PlayerHealth = 100;
+        MaxPlayerHealth = 100;
+
+        PlayerArmour = 50;
+        MaxPlayerArmour = 50;
 
         ShopValues.Points = 0;
 
@@ -48,32 +57,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Speed " + PlayerMovement.speed + " | Damage " + EnemyMovement.Damage + " | Health " + PlayerMovement.MaxPlayerHealth + " | Ammo " + Gun.MaxStoredAmmo);
+        //Debug.Log("Speed " + PlayerMovement.speed + " | Damage " + EnemyMovement.Damage + " | Health " + PlayerMovement.MaxPlayerHealth + " | Ammo " + Gun.MaxStoredAmmo);
         Horizontal = Input.GetAxisRaw("Horizontal");
         // Detects for the inputs A/D or Left/Right arrow keys.
         Vertical = Input.GetAxisRaw("Vertical");
         // Detects for the inputs W/S or Up/Down arrow keys.
 
-        if (Input.GetKeyDown("e"))   
-        {
-            speed = speed + 1f;
-        }
-        if (Input.GetKeyDown("q"))
-        {
-            speed = speed - 1f;
-        }
-        if (Input.GetKeyDown("n") && !SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
-        {
-            SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
-            Time.timeScale = 0;
-            PerksValues.PerkPoints += 1;
-        }
-        if (Input.GetKeyDown("m") && SceneManager.GetSceneByName("PerksUI").isLoaded)
-        {
-            SceneManager.UnloadSceneAsync("PerksUI");
-            Time.timeScale = 1;
-            
-        }
+
         if (Input.GetKeyDown("escape"))
         {
             if (!SceneManager.GetSceneByName("PauseMenu").isLoaded && !SceneManager.GetSceneByName("OptionsMenu").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded && !SceneManager.GetSceneByName("ShopUI").isLoaded)
@@ -92,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("DeathManu");
+
         }
 
         PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);

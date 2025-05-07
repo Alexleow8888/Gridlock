@@ -1274,6 +1274,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &470548335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470548336}
+  - component: {fileID: 470548337}
+  m_Layer: 0
+  m_Name: AdScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470548336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470548335}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1125.2914, y: 588.4972, z: -0.39943266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470548337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470548335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46b8be1ac1500b44b0b155f1e87106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomValue: 0
+  PerksValues: {fileID: 11400000, guid: 26217c0c941206f47adf5ea3c241693a, type: 2}
+  ShopValues: {fileID: 11400000, guid: 80d4c716e9b0ec445ab2bba947acafad, type: 2}
 --- !u!1 &493874348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,10 +1820,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PerksValues: {fileID: 11400000, guid: 26217c0c941206f47adf5ea3c241693a, type: 2}
   ShopValues: {fileID: 11400000, guid: 80d4c716e9b0ec445ab2bba947acafad, type: 2}
-  PlayerHealth: 100
-  MaxPlayerHealth: 100
-  PlayerArmour: 50
-  MaxPlayerArmour: 50
   PlayerHealthBar: {fileID: 983474633}
   PlayerArmourBar: {fileID: 1614721921}
 --- !u!50 &632287855

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Perks : MonoBehaviour
@@ -71,5 +72,11 @@ public class Perks : MonoBehaviour
             AmmoLevelTxt.text = "Level : " + PerksValues.IncreasedAmmoLevel + "/5";
             PerkPointsTxt.text = "Perk Points : " + PerksValues.PerkPoints;
         }
+    }
+    public void CloseButton()
+    {
+        SceneManager.UnloadSceneAsync("PerksUI");
+        SceneManager.UnloadSceneAsync("Ads");
+        Time.timeScale = 1;
     }
 }

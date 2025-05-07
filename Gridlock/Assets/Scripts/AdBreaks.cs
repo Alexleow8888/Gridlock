@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class AdBreaks : MonoBehaviour
+{
+    
+    public int randomValue;
+    int AdIntermission = 1;
+
+    public PerksValues PerksValues;
+    public ShopValues ShopValues;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        randomValue = Random.Range(10, 20);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (AdIntermission == 1)
+        {
+            StartCoroutine(PlayTime());
+        }
+
+    }
+    public IEnumerator PlayTime()
+    {
+        AdIntermission = 0;
+        yield return new WaitForSeconds(randomValue);
+        Debug.Log("Done" + randomValue);
+        if (!SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
+        {
+            SceneManager.LoadScene("Ads", LoadSceneMode.Additive);
+            SceneManager.LoadScene("ShopUI", LoadSceneMode.Additive);
+
+            Time.timeScale = 0;
+            PerksValues.PerkPoints += 1;
+        }
+        randomValue = Random.Range(10, 20);
+        AdIntermission = 1;
+    }
+}
