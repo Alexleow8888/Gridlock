@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerHealth <= 0)
         {
-            SceneManager.LoadScene("DeathManu");
+            SceneManager.LoadScene("DeathMenu");
 
         }
 
