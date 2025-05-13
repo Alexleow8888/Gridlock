@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] FloatingHealthBar PlayerHealthBar;
     [SerializeField] FloatingHealthBar PlayerArmourBar;
 
+    private int EndingRequirements;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +119,21 @@ public class PlayerMovement : MonoBehaviour
             }
 
 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Artefact")
+        {
+            EndingRequirements = 1;
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.tag == "Ending")
+        {
+            if (EndingRequirements == 1)
+            {
+                SceneManager.LoadScene("FinishMenu");
+            }
         }
     }
 }

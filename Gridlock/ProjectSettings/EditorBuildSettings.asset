@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeathMenu.unity
     guid: 90fe1b21bded0044ea88359a596e0109
+  - enabled: 1
+    path: Assets/Scenes/FinishMenu.unity
+    guid: 30a7220c97592e643b39d5fdb2b5897e
   m_configObjects: {}
