@@ -25,13 +25,13 @@ public class AdBreaks : MonoBehaviour
         {
             StartCoroutine(PlayTime());
         }
-
+        Debug.Log(Maze.Phase);
     }
     public IEnumerator PlayTime()
     {
         AdIntermission = 0;
         yield return new WaitForSeconds(randomValue);
-        Debug.Log("Done" + randomValue);
+        Debug.Log("Done " + randomValue);
         if (!SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
         {
             SceneManager.LoadScene("Ads", LoadSceneMode.Additive);
@@ -39,6 +39,13 @@ public class AdBreaks : MonoBehaviour
 
             Time.timeScale = 0;
             PerksValues.PerkPoints += 1;
+            
+            if (Maze.Phase == 4)
+            {
+                Maze.Phase = 0;
+            }
+            
+            Maze.Phase += 1;
         }
         randomValue = Random.Range(10, 20);
         AdIntermission = 1;

@@ -8,6 +8,15 @@ TagManager:
   - Bullet
   - Artefact
   - Ending
+  - P1U3 - P3D3
+  - P1R3 - P3L3
+  - P1D3 - P3U3
+  - P1L3 - P3R3
+  - P2U3 - P4D3
+  - P2R3 - P4L3
+  - P2D3 - P4U3
+  - P2L3 - P4R3
+  - Wall
   layers:
   - Default
   - TransparentFX

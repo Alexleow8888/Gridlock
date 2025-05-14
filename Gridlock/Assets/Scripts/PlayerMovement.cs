@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         ShopValues.Points = 0;
 
+        Maze.Phase = 0;
 
         PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
         PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
