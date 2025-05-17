@@ -17,6 +17,7 @@ TagManager:
   - P2D3 - P4U3
   - P2L3 - P4R3
   - Wall
+  - Audio
   layers:
   - Default
   - TransparentFX

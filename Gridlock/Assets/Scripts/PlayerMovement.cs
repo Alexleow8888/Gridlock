@@ -29,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
 
     private int EndingRequirements;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerHealth <= 0)
         {
+            audioManager.PlaySFX(audioManager.Death);
             SceneManager.LoadScene("DeathMenu");
 
         }
@@ -133,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (EndingRequirements == 1)
             {
+                audioManager.PlaySFX(audioManager.Winning);
                 SceneManager.LoadScene("FinishMenu");
             }
         }

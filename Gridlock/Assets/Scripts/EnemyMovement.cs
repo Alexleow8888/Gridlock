@@ -22,7 +22,14 @@ public class EnemyMovement : MonoBehaviour
     public static float Damage = 5f;
 
     [SerializeField] FloatingHealthBar EnemyHealthBar;
-    
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +57,7 @@ public class EnemyMovement : MonoBehaviour
 
         if(EnemyHealth <= 0)
         {
+            audioManager.PlaySFX(audioManager.Enemy);
             Destroy(gameObject);
         }
 

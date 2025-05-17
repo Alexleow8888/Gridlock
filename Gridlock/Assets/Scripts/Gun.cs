@@ -22,6 +22,13 @@ public class Gun : MonoBehaviour
     public static int AmmoDifference;
     public Text AmmoTxt;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +76,7 @@ public class Gun : MonoBehaviour
         {
             CanFire = false;
             Instantiate(Bullet, BulletTransform.position, Quaternion.identity);
+            audioManager.PlaySFX(audioManager.GunShot);
             CurrentLoadedAmmo -= 1;
             AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
         }
@@ -77,6 +85,7 @@ public class Gun : MonoBehaviour
         if (Input.GetKeyDown("r") && CurrentStoredAmmo > 0)
         {
             AmmoDifference = MaxLoadedAmmo - CurrentLoadedAmmo;
+            audioManager.PlaySFX(audioManager.GunReload);
             if (CurrentStoredAmmo >= AmmoDifference)
             {
                 // If we have enough ammo in storage to fill the magazine
@@ -93,7 +102,14 @@ public class Gun : MonoBehaviour
             AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
         }
-
+        if (Input.GetMouseButton(0) && CurrentStoredAmmo == 0 &&  CurrentLoadedAmmo == 0)
+        {
+            audioManager.PlaySFX(audioManager.GunNoAmmo);
+        }
+        if (Input.GetMouseButton(0) && CurrentLoadedAmmo == 0)
+        {
+            audioManager.PlaySFX(audioManager.GunNoAmmo);
+        }
         AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
 
