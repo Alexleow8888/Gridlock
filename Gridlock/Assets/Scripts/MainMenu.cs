@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         SceneManager.LoadScene("Level");
     }
     public void OptionsButton()
@@ -24,7 +23,6 @@ public class MainMenu : MonoBehaviour
     }
     public void ExitButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         Application.Quit();
     }
 }

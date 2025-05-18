@@ -13,11 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip MazeMovement;
     public AudioClip Enemy;
     public AudioClip Death;
-    public AudioClip Footsteps;
-    public AudioClip Static;
     public AudioClip GunShot;
     public AudioClip GunReload;
-    public AudioClip GunNoAmmo;
     public AudioClip Winning;
     public AudioClip UI;
 
@@ -31,11 +28,21 @@ public class AudioManager : MonoBehaviour
         {
             MusicSource.clip = MainMenuTheme;
             MusicSource.Play();
+            PlaySFX(UI);
         }
         if (SceneManager.GetSceneByName("Level").isLoaded)
         {
             MusicSource.clip = GameplayTheme;
             MusicSource.Play();
+            PlaySFX(UI);
+        }
+        if (SceneManager.GetSceneByName("DeathMenu").isLoaded)
+        {
+            PlaySFX(Death);
+        }
+        if (SceneManager.GetSceneByName("FinishMenu").isLoaded)
+        {
+            PlaySFX(Winning);
         }
 
     }

@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void MainMenuButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
+        
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }

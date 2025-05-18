@@ -13,12 +13,10 @@ public class DeathMenu : MonoBehaviour
     }
     public void RetryButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         SceneManager.LoadScene("Level");
     }
     public void MainMenuButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         SceneManager.LoadScene("MainMenu");
     }
 }

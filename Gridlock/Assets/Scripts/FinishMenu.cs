@@ -13,12 +13,10 @@ public class FinishMenu : MonoBehaviour
     }
     public void RestartButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         SceneManager.LoadScene("Level");
     }
     public void MainMenuButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
         SceneManager.LoadScene("MainMenu");
     }
 }

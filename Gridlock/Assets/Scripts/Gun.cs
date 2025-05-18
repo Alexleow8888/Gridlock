@@ -102,14 +102,7 @@ public class Gun : MonoBehaviour
             AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
         }
-        if (Input.GetMouseButton(0) && CurrentStoredAmmo == 0 &&  CurrentLoadedAmmo == 0)
-        {
-            audioManager.PlaySFX(audioManager.GunNoAmmo);
-        }
-        if (Input.GetMouseButton(0) && CurrentLoadedAmmo == 0)
-        {
-            audioManager.PlaySFX(audioManager.GunNoAmmo);
-        }
+        
         AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
 
 
