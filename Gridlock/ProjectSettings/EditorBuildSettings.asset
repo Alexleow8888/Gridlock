@@ -26,13 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ads.unity
     guid: fbf98986add53e4418363ff24d89de0e
-  - enabled: 0
-    path: Assets/Scenes/DeathMenu.unity
-    guid: 077841d93f4ff9942b48eba875cd801e
   - enabled: 1
     path: Assets/Scenes/DeathMenu.unity
     guid: 90fe1b21bded0044ea88359a596e0109
   - enabled: 1
     path: Assets/Scenes/FinishMenu.unity
     guid: 30a7220c97592e643b39d5fdb2b5897e
+  - enabled: 1
+    path: Assets/Scenes/StartTutorial.unity
+    guid: 930e2c51b04dc274da2a06cf4e61c858
+  - enabled: 1
+    path: Assets/Scenes/EndTutorial.unity
+    guid: 677312dd4761d8445bdd8638d1c68c72
   m_configObjects: {}

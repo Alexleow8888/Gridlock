@@ -22,7 +22,8 @@ public class AdBreaks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomValue = Random.Range(10, 20);
+        randomValue = Random.Range(20, 31);
+        PlayerMovement.Countdown = randomValue;
     }
 
     // Update is called once per frame
@@ -54,7 +55,8 @@ public class AdBreaks : MonoBehaviour
             
             Maze.Phase += 1;
         }
-        randomValue = Random.Range(10, 20);
+        randomValue = Random.Range(20, 31);
+        PlayerMovement.Countdown = randomValue;
         AdIntermission = 1;
     }
 }

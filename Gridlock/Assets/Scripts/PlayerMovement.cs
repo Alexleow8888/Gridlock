@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     private int IsRunning;
     private int NumberofSeconds;
+    public static int Countdown;
+    private int CountdownRunning;
+    public Text CountdownTxt;
 
     public static int PlayerHealth;
     public static int MaxPlayerHealth ;
@@ -28,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] FloatingHealthBar PlayerArmourBar;
 
     private int EndingRequirements;
+    private int StartTutorial;
+    private int EndTutorial;
 
     AudioManager audioManager;
 
@@ -42,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
 
         IsRunning = 1;
-        NumberofSeconds = 5;
+        NumberofSeconds = 3;
+
+        CountdownRunning = 1;
 
         speed = 10f;
         PerksValues.PerkPoints = 0;
@@ -62,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
         PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
+
+        StartTutorial = 1;
+        EndTutorial = 0;
+
+        CountdownTxt.text = "Next Ad Break : " + Countdown + "s";
     }
 
     // Update is called once per frame
@@ -89,13 +102,25 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(timer());
         }
-
+        if (CountdownRunning == 1)
+        {
+            StartCoroutine(CountdownTimer());
+        }
         if (PlayerHealth <= 0)
         {
             audioManager.PlaySFX(audioManager.Death);
             SceneManager.LoadScene("DeathMenu");
 
         }
+        if (StartTutorial == 1)
+        {
+            StartCoroutine(Tutorial1());
+        }
+        if (EndTutorial == 1)
+        {
+            StartCoroutine(Tutorial2());
+        }
+
 
         PlayerHealthBar.UpdateHealthBar(PlayerHealth, MaxPlayerHealth);
         PlayerArmourBar.UpdateHealthBar(PlayerArmour, MaxPlayerArmour);
@@ -111,6 +136,32 @@ public class PlayerMovement : MonoBehaviour
         ShopValues.Points += 1;
         IsRunning = 1;
     }
+    public IEnumerator CountdownTimer()
+    {
+        CountdownRunning = 0;
+        Countdown -= 1;
+        yield return new WaitForSeconds(1);
+        CountdownTxt.text = "Next Ad Break : " + Countdown + "s";
+        if (Countdown != 0)
+        {
+            CountdownRunning = 1;
+        }
+    }
+    public IEnumerator Tutorial1()
+    {
+        StartTutorial = 0;
+        SceneManager.LoadScene("StartTutorial", LoadSceneMode.Additive);
+        yield return new WaitForSeconds(5);
+        SceneManager.UnloadSceneAsync("StartTutorial");
+    }
+    public IEnumerator Tutorial2()
+    {
+        EndTutorial = 0;
+        SceneManager.LoadScene("EndTutorial", LoadSceneMode.Additive);
+        yield return new WaitForSeconds(5);
+        SceneManager.UnloadSceneAsync("EndTutorial");
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
@@ -136,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         {
             EndingRequirements = 1;
             collision.gameObject.SetActive(false);
+            EndTutorial = 1;
         }
         if (collision.gameObject.tag == "Ending")
         {
