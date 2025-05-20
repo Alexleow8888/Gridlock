@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 219514534}
   - component: {fileID: 219514533}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ScanLines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 377600082}
   - component: {fileID: 377600081}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3580,7 +3580,7 @@ GameObject:
   - component: {fileID: 874193837}
   - component: {fileID: 874193836}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: AmmoBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,7 +3732,7 @@ GameObject:
   - component: {fileID: 971762748}
   - component: {fileID: 971762747}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: NextAdBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4115,7 +4115,7 @@ GameObject:
   - component: {fileID: 1352489453}
   - component: {fileID: 1352489452}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: NextAd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
