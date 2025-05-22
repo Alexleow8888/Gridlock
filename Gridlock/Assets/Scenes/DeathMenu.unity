@@ -413,11 +413,8 @@ MonoBehaviour:
   MazeMovement: {fileID: 8300000, guid: d591c28190f5ece42a1304946667e803, type: 3}
   Enemy: {fileID: 8300000, guid: 541ad963ffa394845b948c43eb0809cf, type: 3}
   Death: {fileID: 8300000, guid: 68fbaaecb5ecf014181e1aae0e0a667d, type: 3}
-  Footsteps: {fileID: 8300000, guid: 12dab368fff637d49bdbcf26dac8cfe0, type: 3}
-  Static: {fileID: 8300000, guid: e7e1cc5c5824e2447a64c57281794114, type: 3}
   GunShot: {fileID: 8300000, guid: 8c4e05db6e745f24780d0b39b9ef6ed1, type: 3}
   GunReload: {fileID: 8300000, guid: 3c4b93e56c437b743b0c0b20995cfe63, type: 3}
-  GunNoAmmo: {fileID: 8300000, guid: 6feaa9678e5981742bfa7b08cc7329e0, type: 3}
   Winning: {fileID: 8300000, guid: ea52e802ea378be49a37cf9bbe05f648, type: 3}
   UI: {fileID: 8300000, guid: 6f857eaedee523d468ab8d6452e6a804, type: 3}
   MainMenuTheme: {fileID: 8300000, guid: c3d62a76c316d33459b76ea7d6eaeba0, type: 3}
@@ -734,8 +731,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 42d8d6f41edc19b408adeed4fcad16ef, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -868,8 +865,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 42d8d6f41edc19b408adeed4fcad16ef, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1323,15 +1320,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: f744cc19d4dc35249a45bd4c54ce347b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
