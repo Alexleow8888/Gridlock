@@ -44,8 +44,8 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             DestroyProjectile();
-            //Destroy(other.gameObject);
         }
+        // Destroys the Bullet if it hits any of the walls
         if (other.CompareTag("Wall"))
         {
             DestroyProjectile();

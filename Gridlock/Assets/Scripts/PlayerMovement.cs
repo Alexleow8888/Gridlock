@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         PerksValues.IncreasedDamageLevel = 0;
         PerksValues.IncreasedHealthLevel = 0;
         PerksValues.IncreasedAmmoLevel = 0;
+        // Resets the Perk levels.
         PlayerHealth = 100;
         MaxPlayerHealth = 100;
 
@@ -112,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene("DeathMenu");
 
         }
+        // Triggers Tutorials
         if (StartTutorial == 1)
         {
             StartCoroutine(Tutorial1());
@@ -130,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         player.velocity = new Vector2(Horizontal, Vertical).normalized * speed;
     }
     public IEnumerator timer()
+    // Coroutine that adds points every few seconds.    
     {
         IsRunning = 0;
         yield return new WaitForSeconds(NumberofSeconds);
@@ -138,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public IEnumerator CountdownTimer()
     {
+        // Coroutine that displays how long until the next ad break.
         CountdownRunning = 0;
         Countdown -= 1;
         yield return new WaitForSeconds(1);

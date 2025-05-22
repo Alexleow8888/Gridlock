@@ -25,6 +25,10 @@ public class EnemyMovement : MonoBehaviour
 
     AudioManager audioManager;
 
+    private Vector3 RespawnPoint;
+    private int IsWaitingToRespawn = 0;
+    public int RespawnTimer;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -39,6 +43,8 @@ public class EnemyMovement : MonoBehaviour
         EnemyHealthBar = GetComponentInChildren<FloatingHealthBar>();
 
         EnemyHealthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth);
+
+        RespawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -55,11 +61,14 @@ public class EnemyMovement : MonoBehaviour
             //Debug.Log("No player detected");
         }
 
-        if(EnemyHealth <= 0)
+        if(EnemyHealth <= 0 && IsWaitingToRespawn == 0)
         {
             audioManager.PlaySFX(audioManager.Enemy);
-            Destroy(gameObject);
+            transform.position = new Vector3(9999, 9999, 9999); // teleports the player out of sight
+            IsWaitingToRespawn = 1;
+            StartCoroutine(Respawn());
         }
+
 
     }
 
@@ -91,6 +100,14 @@ public class EnemyMovement : MonoBehaviour
             // If the ray doesn't hit anything then sets the CanSeePlayer to a false state.
         }
         
+    }
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(RespawnTimer);
+        EnemyHealth = MaxEnemyHealth; // Resets the Enemy's health
+        EnemyHealthBar.UpdateHealthBar(EnemyHealth, MaxEnemyHealth); // Resets the Health Bar.
+        transform.position = RespawnPoint; // Resets it to its default position.
+        IsWaitingToRespawn = 0;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

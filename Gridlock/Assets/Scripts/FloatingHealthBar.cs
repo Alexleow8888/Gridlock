@@ -12,10 +12,4 @@ public class FloatingHealthBar : MonoBehaviour
     {
         slider.value = currentValue / maxValue;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log("Health " + PlayerMovement.PlayerHealth + "| Armour " + PlayerMovement.PlayerArmour);
-    }
 }

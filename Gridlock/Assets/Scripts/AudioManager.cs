@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
         {
             PlaySFX(Winning);
         }
-
+        // Plays the Sound effects/Music when the scenes load.
     }
 
     public void PlaySFX(AudioClip clip)

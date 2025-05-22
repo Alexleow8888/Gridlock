@@ -37,6 +37,7 @@ public class AdBreaks : MonoBehaviour
     }
     public IEnumerator PlayTime()
     {
+        // Will trigger after a random interval and will cause the Ads and Shop to appear whilst restricting player movement.
         AdIntermission = 0;
         yield return new WaitForSeconds(randomValue);
         Debug.Log("Done " + randomValue);

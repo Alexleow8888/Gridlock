@@ -54,8 +54,8 @@ public class Perks : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             PerksValues.PerkPoints -= 1;
-            EnemyMovement.Damage += 1;
-            PerksValues.IncreasedDamageLevel += 1;
+            EnemyMovement.Damage += 1; // Increases the damage
+            PerksValues.IncreasedDamageLevel += 1; // Increases the level
             DamageLevelTxt.text = "Level : " + PerksValues.IncreasedDamageLevel + "/5";
             PerkPointsTxt.text = "Perk Points : " + PerksValues.PerkPoints;
         }
@@ -66,8 +66,8 @@ public class Perks : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             PerksValues.PerkPoints -= 1;
-            PlayerMovement.MaxPlayerHealth += 10;
-            PerksValues.IncreasedHealthLevel += 1;
+            PlayerMovement.MaxPlayerHealth += 10; // Increases the total health
+            PerksValues.IncreasedHealthLevel += 1; // Increases the level
             HealthLevelTxt.text = "Level : " + PerksValues.IncreasedHealthLevel + "/5";
             PerkPointsTxt.text = "Perk Points : " + PerksValues.PerkPoints;
         }
@@ -78,8 +78,8 @@ public class Perks : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             PerksValues.PerkPoints -= 1;
-            Gun.MaxStoredAmmo += 6;
-            PerksValues.IncreasedAmmoLevel += 1;
+            Gun.MaxStoredAmmo += 6; // Increases the total ammo
+            PerksValues.IncreasedAmmoLevel += 1; // Increases the level
             AmmoLevelTxt.text = "Level : " + PerksValues.IncreasedAmmoLevel + "/5";
             PerkPointsTxt.text = "Perk Points : " + PerksValues.PerkPoints;
         }

@@ -209,6 +209,7 @@ MonoBehaviour:
   EnemyHealth: 50
   MaxEnemyHealth: 50
   EnemyHealthBar: {fileID: 0}
+  RespawnTimer: 30
 --- !u!50 &5566423028123733559
 Rigidbody2D:
   serializedVersion: 4

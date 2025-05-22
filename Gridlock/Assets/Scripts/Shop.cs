@@ -27,18 +27,20 @@ public class Shop : MonoBehaviour
         HealthPriceTxt.text = "Price : " + ShopValues.HealthPrice;
         ArmourPriceTxt.text = "Price : " + ShopValues.ArmourPrice;
         AmmoPriceTxt.text = "Price : " + ShopValues.AmmoPrice;
+        // Set the text to display the prices.
     }
     private void Update()
     {
         HealthPriceTxt.text = "Price : " + ShopValues.HealthPrice;
         ArmourPriceTxt.text = "Price : " + ShopValues.ArmourPrice;
         AmmoPriceTxt.text = "Price : " + ShopValues.AmmoPrice;
+        // Updates the text every frame.
     }
     public void CloseButton()
     {
-        audioManager.PlaySFX(audioManager.UI);
-        SceneManager.UnloadSceneAsync("ShopUI");
-        SceneManager.LoadScene("PerksUI", LoadSceneMode.Additive);
+        audioManager.PlaySFX(audioManager.UI); // Plays the UI sound
+        SceneManager.UnloadSceneAsync("ShopUI"); // Removes the ShopUI
+        SceneManager.LoadScene("PerksUI", LoadSceneMode.Additive); // Loads the PerksUI scene over the top of the current scene.
     }
     public void ReplenishHealthButton()
     {
@@ -46,9 +48,9 @@ public class Shop : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             ShopValues.Points -= ShopValues.HealthPrice;
-            ShopValues.HealthPrice *= 1.1f;
-            ShopValues.HealthPrice = Mathf.Round(ShopValues.HealthPrice);
-            PlayerMovement.PlayerHealth = PlayerMovement.MaxPlayerHealth;
+            ShopValues.HealthPrice *= 1.1f; // Increases the price by 10% each time.
+            ShopValues.HealthPrice = Mathf.Round(ShopValues.HealthPrice); // Rounds the price to a whole number.
+            PlayerMovement.PlayerHealth = PlayerMovement.MaxPlayerHealth; // Restores the player's health.
             PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }
@@ -58,9 +60,9 @@ public class Shop : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             ShopValues.Points -= ShopValues.ArmourPrice;
-            ShopValues.ArmourPrice *= 1.1f;
-            ShopValues.ArmourPrice = Mathf.Round(ShopValues.ArmourPrice);
-            PlayerMovement.PlayerArmour = PlayerMovement.MaxPlayerArmour;
+            ShopValues.ArmourPrice *= 1.1f; // Increases the price by 10% each time.
+            ShopValues.ArmourPrice = Mathf.Round(ShopValues.ArmourPrice); // Rounds the price to a whole number.
+            PlayerMovement.PlayerArmour = PlayerMovement.MaxPlayerArmour; // Restores the player's armour.
             PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }
@@ -70,10 +72,10 @@ public class Shop : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.UI);
             ShopValues.Points -= ShopValues.AmmoPrice;
-            ShopValues.AmmoPrice *= 1.1f;
-            ShopValues.AmmoPrice = Mathf.Round(ShopValues.AmmoPrice);
-            Gun.CurrentLoadedAmmo = Gun.MaxLoadedAmmo;
-            Gun.CurrentStoredAmmo = Gun.MaxStoredAmmo;
+            ShopValues.AmmoPrice *= 1.1f; // Increases the price by 10% each time.
+            ShopValues.AmmoPrice = Mathf.Round(ShopValues.AmmoPrice); // Rounds the price to a whole number.
+            Gun.CurrentLoadedAmmo = Gun.MaxLoadedAmmo; // Restores the player's ammo.
+            Gun.CurrentStoredAmmo = Gun.MaxStoredAmmo; // Restores the player's ammo.
             PointsTxt.text = "Points - " + ShopValues.Points;
         }
     }

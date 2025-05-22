@@ -27,7 +27,7 @@ public class Maze : MonoBehaviour
             CurrentPhase = 0;
             if (gameObject.tag == "P1U3 - P3D3")
             {
-                transform.position = new Vector3(0, 15, 0);
+                transform.position = new Vector3(0, 15, 0); // Moves the tile map by 15 up
             }
             if (gameObject.tag == "P1R3 - P3L3")
             {

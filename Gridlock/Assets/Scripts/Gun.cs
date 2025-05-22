@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
     {
         MainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         
-
+        // Sets default ammo amounts
         CurrentLoadedAmmo = 6;
         CurrentStoredAmmo = 30;
         MaxLoadedAmmo = 6;
@@ -47,12 +47,14 @@ public class Gun : MonoBehaviour
     {
         mousePos = MainCam.ScreenToWorldPoint(Input.mousePosition);
         if(!SceneManager.GetSceneByName("ShopUI").isLoaded && !SceneManager.GetSceneByName("PerksUI").isLoaded)
+        // Disables aiming if in a menu.
         {
             Vector3 rotation = mousePos - transform.position;
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotZ);
         }
         if(SceneManager.GetSceneByName("ShopUI").isLoaded || SceneManager.GetSceneByName("PerksUI").isLoaded || SceneManager.GetSceneByName("PauseMenu").isLoaded)
+        // Disables firing if in a menu.
         {
             CanFire = false;
         }
@@ -62,7 +64,7 @@ public class Gun : MonoBehaviour
         {
             if (!CanFire)
             {
-                Timer += Time.deltaTime;
+                Timer += Time.deltaTime; // Cooldown between shots
                 if(Timer > TimeBetweenFiring)
                 {
                     CanFire = true;
@@ -75,8 +77,8 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && CanFire == true && CurrentLoadedAmmo > 0)
         {
             CanFire = false;
-            Instantiate(Bullet, BulletTransform.position, Quaternion.identity);
-            audioManager.PlaySFX(audioManager.GunShot);
+            Instantiate(Bullet, BulletTransform.position, Quaternion.identity); // Spawns a bullet
+            audioManager.PlaySFX(audioManager.GunShot); // Plays a gun shot sound
             CurrentLoadedAmmo -= 1;
             AmmoTxt.text = "Ammo : " + CurrentLoadedAmmo + " / " + CurrentStoredAmmo;
         }
